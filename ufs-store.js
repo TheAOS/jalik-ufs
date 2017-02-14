@@ -486,7 +486,7 @@ export class Store {
              * @param file
              * @return boolean
              */
-            self.onCopyError = function (err, fileId, file) {
+            self.onCopyError = self.onCopyError || function (err, fileId, file) {
                 console.error(`ufs: cannot copy file "${fileId}" (${err.message})`, err);
             };
 
@@ -494,7 +494,7 @@ export class Store {
              * Called when a file has been uploaded
              * @param file
              */
-            self.onFinishUpload = function (file) {
+            self.onFinishUpload = self.onFinishUpload || function (file) {
             };
 
             /**
@@ -505,7 +505,7 @@ export class Store {
              * @param response
              * @return boolean
              */
-            self.onRead = function (fileId, file, request, response) {
+            self.onRead = self.onRead || function (fileId, file, request, response) {
                 return true;
             };
 
@@ -516,7 +516,7 @@ export class Store {
              * @param file
              * @return boolean
              */
-            self.onReadError = function (err, fileId, file) {
+            self.onReadError = self.onReadError || function (err, fileId, file) {
                 console.error(`ufs: cannot read file "${fileId}" (${err.message})`, err);
             };
 
@@ -527,7 +527,7 @@ export class Store {
              * @param file
              * @return boolean
              */
-            self.onWriteError = function (err, fileId, file) {
+            self.onWriteError = self.onWriteError || function (err, fileId, file) {
                 console.error(`ufs: cannot write file "${fileId}" (${err.message})`, err);
             };
         }
